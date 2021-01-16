@@ -1,0 +1,11 @@
+<li>
+	{{name}}
+
+	<button class="change-status" data-id="{{id}}" data-newstatus="{{status}}">
+		{{#if status}}Devoured!{{else}}On the hunt!{{/if}}
+	</button>
+
+	<button class="delete-burger" data-id="{{id}}">
+		Delete
+	</button> <!-- this adds the delete button for each burger -->
+</li>

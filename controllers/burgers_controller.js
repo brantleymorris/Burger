@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
 router.post("/api/burgers", async (req, res) => {
     let result = await burger.insertOne(req.body.name, req.body.status);
     
+    // returns the id of the new burger to the client
     res.json({id: result.id});
 });
 
@@ -34,10 +35,11 @@ router.put("/api/burgers/:id", async (req, res) => {
     let result = await burger.updateOne(req.body.status, req.params.id); 
     
     if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
+        // If no rows were changed, then the ID must not exist, so 404 and connection ends
         return res.status(404).end();
     }
 
+    // lets the front end know that the burger update worked, and ends the connection
     res.status(200).end();
 });
 

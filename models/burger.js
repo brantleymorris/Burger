@@ -2,7 +2,7 @@ const orm = require("../config/orm.js");
 
 // create functions on burger object
 const burger = {
-    selectAll: async (cb) => {
+    selectAll: async () => {
         let result = await orm.all("burgers");
         return result;
     },
