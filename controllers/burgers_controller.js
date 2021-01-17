@@ -8,7 +8,9 @@ const burger = require("../models/burger.js");
 // route to get all data on all burgers
 router.get("/", async (req, res) => {
     let result = await burger.selectAll();
+    console.log(result);
 
+    // this may need to parsed differently
     let allBurgers = {
         burgers: result
     };
