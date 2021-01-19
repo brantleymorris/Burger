@@ -27,14 +27,13 @@ $(function() {
       event.preventDefault();
   
       var newBurger = {
-        name: $("#bu").val().trim(),
-        status: $("[name=status]:checked").val().trim() // don't need status since burgers will start as false
+        name: $("#bu").val().trim()
       };
   
       // Send the POST request with new burger information
       $.ajax("/api/burgers", {
         type: "POST",
-        data: newBurger // this doesn't need status, will be false by default
+        data: newBurger
       }).then(
         function() {
           location.reload();
