@@ -6,6 +6,7 @@ const burger = require("../models/burger.js");
 // route to get all data on all burgers
 router.get("/", async (req, res) => {
     let result = await burger.selectAll();
+    console.log(result);
 
     let allBurgers = {
         burgers: result
@@ -15,29 +16,21 @@ router.get("/", async (req, res) => {
 });
 
 // route to create new burger
-// takes in burger name and status, returns the new burgers id
-    // TODO - make sure this is talking to the dom correctly
-    //      - should be able to hard code false for req.body.status
 router.post("/api/burgers", async (req, res) => {
-    let result = await burger.insertOne(req.body.name, req.body.status);
+    let result = await burger.insertOne(req.body.name);
     
-    // returns the id of the new burger to the client
     res.json({id: result.id});
 });
 
-// route to update the status(devoured) of a burger
-// take in id and new status, returns success or fail
-    // TODO - make sure it is talking to the front end okay
-    //      - should be able to hard code true for req.body.status
+// updates burger status
 router.put("/api/burgers/:id", async (req, res) => {
-    let result = await burger.updateOne(req.body.status, req.params.id); 
+    console.log("update called");
+    let result = await burger.updateOne(req.params.id); 
     
     if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404 and connection ends
         return res.status(404).end();
     }
-
-    // lets the front end know that the burger update worked, and ends the connection
+    console.log("status updated");
     res.status(200).end();
 });
 
@@ -46,11 +39,9 @@ router.delete("/api/burgers/:id", async (req, res) => {
     let result = await burger.delete(req.params.id);
 
     if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404 and connection ends
         return res.status(404).end();
     }
 
-    // lets the front end know that the burger update worked, and ends the connection
     res.status(200).end();
 })
 
