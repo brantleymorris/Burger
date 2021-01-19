@@ -13,6 +13,10 @@ const burger = {
     updateOne: async (status, id) => {
         let result = await orm.updateOne(status, id); 
         return result[0];
+    },
+    delete: async (id) => {
+        let result = await orm.delete(id);
+        return result[0];
     }
 };
 

@@ -3,19 +3,15 @@ const router = express.Router();
 
 const burger = require("../models/burger.js");
 
-// add routes here
-
 // route to get all data on all burgers
 router.get("/", async (req, res) => {
     let result = await burger.selectAll();
-    console.log(result);
 
-    // this may need to parsed differently
     let allBurgers = {
         burgers: result
     };
 
-    res.render("index", allBurgers); // double check that index is where this needs to go
+    res.render("index", allBurgers);
 });
 
 // route to create new burger
@@ -45,6 +41,17 @@ router.put("/api/burgers/:id", async (req, res) => {
     res.status(200).end();
 });
 
-// TODO - consider adding delete button, optional
+// deletes an existing burger
+router.delete("/api/burgers/:id", async (req, res) => {
+    let result = await burger.delete(req.params.id);
+
+    if (result.changedRows == 0) {
+        // If no rows were changed, then the ID must not exist, so 404 and connection ends
+        return res.status(404).end();
+    }
+
+    // lets the front end know that the burger update worked, and ends the connection
+    res.status(200).end();
+})
 
 module.exports = router;
