@@ -1,11 +1,14 @@
 <li>
 	{{burger_name}}
 
-	<button class="change-status" data-id="{{id}}" data-newstatus="{{status}}">
-		{{#if status}}Devour!{{else}}On the hunt!{{/if}}
-	</button>
+	{{#unless devoured}}
+		<button class="change-status" data-id="{{id}}" data-newstatus="{{status}}">
+			On the hunt!
+		</button>
+	{{/unless}}
+
 
 	<button class="delete-burger" data-id="{{id}}">
 		Delete
-	</button> <!-- this adds the delete button for each burger -->
+	</button>
 </li>
