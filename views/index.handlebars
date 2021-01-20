@@ -1,32 +1,42 @@
 <h1>Burgers!</h1>
 
-<h2>I'm on the hunt for!</h2>
+<div class="container-1">
+  <h2>Add a burger to the hunt.</h2>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}} <!-- need to check what this needs to be, was sleepy -->
-      {{> burgers/burger-block status=false}} <!-- same here -->
-    {{/unless}}
-  {{/each}}
-</ul>
+  <form class="create-form">
 
-<h2>I have devoured!</h2>
+    <div class="form-group">
+      <label for="bu">Burger Name:</label>
+      <input type="text" id="bu" name="burger_name"> <!-- was just name, check js -->
+    </div>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}} <!-- check this, was sleepy -->
-      {{> burgers/burger-block status=true}} <!--I think this is importing the partical-->
-    {{/if}}
-  {{/each}}
-</ul>
+    <button type="submit">Add Burger</button>
+  </form>
+</div>
 
-<h2>Add a burger to the hunt.</h2>
-<form class="create-form">
+<div class="container-2">
 
-  <div class="form-group">
-    <label for="bu">Burger Name:</label>
-    <input type="text" id="bu" name="burger_name"> <!-- was just name, check js -->
+  <div class="blue">
+    <h2>I'm on the hunt for!</h2>
+
+    <ul>
+      {{#each burgers}}
+        {{#unless devoured}} <!-- need to check what this needs to be, was sleepy -->
+          {{> burgers/burger-block status=false}} <!-- same here -->
+        {{/unless}}
+      {{/each}}
+    </ul>
   </div>
 
-  <button type="submit">Add Burger</button>
-</form>
+  <div class="red">
+    <h2>I have devoured!</h2>
+
+    <ul>
+      {{#each burgers}}
+        {{#if devoured}} <!-- check this, was sleepy -->
+          {{> burgers/burger-block status=true}} <!--I think this is importing the partical-->
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
