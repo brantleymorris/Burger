@@ -6,7 +6,7 @@
 
     ## Installation
         To install this program first make a fork of the main branch, if you need help creating a fork see the attached
-        article.
+        article. https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
 
     ## Usage
         To use this program enter the burgers you would like to eat. They will be displayed in the "On the hunt!" 
