@@ -7,7 +7,7 @@
 
     <div class="form-group">
       <label for="bu">Burger Name:</label>
-      <input type="text" id="bu" name="burger_name"> <!-- was just name, check js -->
+      <input type="text" id="bu" name="burger_name">
     </div>
 
     <button type="submit">Add Burger</button>
@@ -21,8 +21,8 @@
 
     <ul>
       {{#each burgers}}
-        {{#unless devoured}} <!-- need to check what this needs to be, was sleepy -->
-          {{> burgers/burger-block status=false}} <!-- same here -->
+        {{#unless devoured}}
+          {{> burgers/burger-block status=false}}
         {{/unless}}
       {{/each}}
     </ul>
@@ -33,8 +33,8 @@
 
     <ul>
       {{#each burgers}}
-        {{#if devoured}} <!-- check this, was sleepy -->
-          {{> burgers/burger-block status=true}} <!--I think this is importing the partical-->
+        {{#if devoured}}
+          {{> burgers/burger-block status=true}}
         {{/if}}
       {{/each}}
     </ul>
